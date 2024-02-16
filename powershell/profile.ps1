@@ -1,5 +1,6 @@
 Set-Alias touch touch_file
 
+$dev = (Get-Item (split-path -parent  $MyInvocation.MyCommand.Definition)).parent.parent
 function touch_file {
     param(
         [Parameter()]
@@ -28,4 +29,8 @@ function push {
         git commit -m "$message"
         git push
     }
+}
+
+function dev {
+    Set-Location $dev
 }
